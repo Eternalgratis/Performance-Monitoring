@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function AccountOfficer () {
     retun (
@@ -34,7 +35,7 @@ function AccountOfficer () {
             <button type="submit" className="btn btn-sucess w-100 rounded-0">Register</button>
           </form>
            <p>Alraedy have an acctount?</p>
-           <link to='/login' className="btn btn-defauly border w-100 bg-light rounded-0 ">Login</link>
+           <Link to='/login' className="btn btn-defauly border w-100 bg-light rounded-0 ">Login</Link>
          </div>
          </div>
         </div>

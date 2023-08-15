@@ -1,8 +1,9 @@
 import React from "react";
 import'bootstrap/dist/css/bootstrap.min.css'
+import { Link } from "react-router-dom"
 
 
-function AdminSignup () {
+function Admin() {
     return (
         <div className="d-flex justify-content-center align-item-center bg-secondary wh-100">
             <div className="bg-white p-3 rounded wh-25">
@@ -47,10 +48,10 @@ function AdminSignup () {
             <button type="submit" className="btn btn-success w-100 rounded-0">Register</button>
         </form>
         <p>Already have an acctount?</p>
-        <button className="btn btn-default border w-100 bg-light rounded-0 ">Login</button>
+        <Link to='/login' className="btn btn-default border w-100 bg-light rounded-0 ">Login</Link>
             </div>
         </div>
     )
 }
 
-export default AdminSignup;
+export default Admin;
