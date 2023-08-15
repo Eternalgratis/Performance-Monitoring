@@ -1,25 +1,11 @@
 import React from "react";
-import'bootstrap/dist/css/bootstrap.min.css'
 
-
-function AdminSignup () {
+function Login () {
     return (
         <div className="d-flex justify-content-center align-item-center bg-secondary wh-100">
             <div className="bg-white p-3 rounded wh-25">
-            <h1>Register</h1>
+            <h1>Login</h1>
         <form>
-            <div className="mb-3">
-                <label htmlFor="name">
-                    <strong>Staff No</strong>
-                </label>
-                <input 
-                type="text"
-                placeholder="Enter your staff no"
-                autoComplete="off"
-                name="name"
-                className="form-control rounded-0"
-                 />
-            </div>
             <div className="mb-3">
                 <label htmlFor="email">
                     <strong>Email</strong>
@@ -44,13 +30,11 @@ function AdminSignup () {
                 className="form-control rounded-0"
                  />
             </div>
-            <button type="submit" className="btn btn-success w-100 rounded-0">Register</button>
+            <button type="submit" className="btn btn-success w-100 rounded-0">Login</button>
         </form>
-        <p>Already have an acctount?</p>
-        <button className="btn btn-default border w-100 bg-light rounded-0 ">Login</button>
             </div>
         </div>
     )
 }
 
-export default AdminSignup;
+export default Login;

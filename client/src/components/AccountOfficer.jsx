@@ -1,13 +1,12 @@
 import React from "react";
-import'bootstrap/dist/css/bootstrap.min.css'
 
-
-function AdminSignup () {
-    return (
-        <div className="d-flex justify-content-center align-item-center bg-secondary wh-100">
+function AccountOfficer () {
+    retun (
+        <div>
+            <div className="d-flex justify-content-center align-item-center bg-secondary wh-100">
             <div className="bg-white p-3 rounded wh-25">
             <h1>Register</h1>
-        <form>
+          <form>
             <div className="mb-3">
                 <label htmlFor="name">
                     <strong>Staff No</strong>
@@ -15,18 +14,6 @@ function AdminSignup () {
                 <input 
                 type="text"
                 placeholder="Enter your staff no"
-                autoComplete="off"
-                name="name"
-                className="form-control rounded-0"
-                 />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="email">
-                    <strong>Email</strong>
-                </label>
-                <input 
-                type="text"
-                placeholder="Enter your email"
                 autoComplete="off"
                 name="name"
                 className="form-control rounded-0"
@@ -44,13 +31,14 @@ function AdminSignup () {
                 className="form-control rounded-0"
                  />
             </div>
-            <button type="submit" className="btn btn-success w-100 rounded-0">Register</button>
-        </form>
-        <p>Already have an acctount?</p>
-        <button className="btn btn-default border w-100 bg-light rounded-0 ">Login</button>
-            </div>
+            <button type="submit" className="btn btn-sucess w-100 rounded-0">Register</button>
+          </form>
+           <p>Alraedy have an acctount?</p>
+           <link to='/login' className="btn btn-defauly border w-100 bg-light rounded-0 ">Login</link>
+         </div>
+         </div>
         </div>
     )
 }
 
-export default AdminSignup;
+export default AccountOfficer;
