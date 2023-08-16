@@ -5,7 +5,7 @@ import axios from "axios"
 
 
 function Admin() {
-    const [staffno, setStaffNo] = useState("")
+    const [staffno, setStaffno] = useState("")
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -32,7 +32,8 @@ function Admin() {
                 autoComplete="off"
                 name="name"
                 className="form-control rounded-0"
-                onChange={(e) => setStaffNo(e.target.value)}
+                required
+                onChange={(e) => setStaffno(e.target.value)}
                  />
             </div>
             <div className="mb-3">
@@ -45,6 +46,7 @@ function Admin() {
                 autoComplete="off"
                 name="name"
                 className="form-control rounded-0"
+                required
                 onChange={(e) => setName(e.target.value)}
                  />
             </div>
@@ -58,6 +60,7 @@ function Admin() {
                 autoComplete="off"
                 name="name"
                 className="form-control rounded-0"
+                required
                 onChange={(e) => setEmail(e.target.value)}
                  />
             </div>
@@ -71,6 +74,7 @@ function Admin() {
                 autoComplete="off"
                 name="name"
                 className="form-control rounded-0"
+                required
                 onChange={(e) => setPassword(e.target.value)}  
                  />
             </div>
