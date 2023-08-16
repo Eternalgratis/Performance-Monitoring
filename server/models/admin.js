@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
 
 const adminSchema = new mongoose.Schema({
-    staffno: string,
-    name: string,
-    email: string,
-    password: string
+    staffno: String,
+    name: String,
+    email: String,
+    password: String
 })
 
 const AdminModel = mongoose.model("admin", adminSchema)

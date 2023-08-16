@@ -9,7 +9,7 @@ app.use(cors())
 
 mongoose.connect('mongodb://127.0.0.1:27017/PerformanceMonitoring')
 
-app.get('/admin', (req, res) => {
+app.post('/admin', (req, res) => {
     AdminModel.create(req.body)
     .then(admin => res.json(admin))
     .catch(err => res.json(err))
