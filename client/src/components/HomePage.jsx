@@ -3,7 +3,7 @@ import { useState } from "react";
 
 
 function Homepage () {
-    const [user, setUser] = useState("Titi")
+    const [user, setUser] = useState("User")
 
     return (
         <div>
