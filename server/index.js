@@ -10,6 +10,22 @@ app.use(cors())
 
 mongoose.connect('mongodb://127.0.0.1:27017/PerformanceMonitoring')
 
+app.post('/login', (req, res) => {
+    const {email, password} = req.body
+    AdminModel.findOne({email:email})
+    .then(user => {
+        if(user) {
+            if(user.password === password) {
+                res.json('Successful')
+            } else {
+                res.json('Already taken')
+            }
+        }  else {
+            res.json('No record')
+        }
+    })
+})
+
 app.post('/admin', (req, res) => {
     AdminModel.create(req.body)
     .then(admin => res.json(admin))
