@@ -3,15 +3,14 @@ import './App.css'
 import Admin from './components/Admin'
 import Login from './components/Login'
 import AccountOfficer from './components/AccountOfficer'
-import Homepage from './components/HomePage'
-
+import Registration from './components/Registration'
 function App() {
 
   return (
       <div>
         <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Homepage />}></Route>
+          <Route path='/' element={<Registration />}></Route>
           <Route path="/admin" element={<Admin/>}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/accountOfficer" element={<AccountOfficer />}></Route>
