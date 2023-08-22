@@ -1,21 +1,16 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react'
+import axios from 'axios'
 
-function Login () {
-    const[email, setEmail] = useState("")
-    const[password, setPassword] = useState("")
-    const navigate = useNavigate()
+function AdminLogin () {
+        const [staffno, setStaffNo] = useState("")
+        const [password, setPassword] = useState("")
 
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        axios.post('http://localhost:3001/login', {email, password})
-        .then(result => {console.log(result)
-            navigate('/homepage')
-        })
-        .then(err => console.log(err))
-    }
+        const handleSubmit = (e) => {
+            e.preventDefault()
+            axios.post('http://localhost:3001/admin-login', {staffno, password})
+            .then(result => console.log(result))
+            .then(err => console.log(err))
+        }
 
     return (
         <div className="d-flex justify-content-center align-items-center bg-secondary wh-100">
@@ -23,16 +18,16 @@ function Login () {
             <h1>Login</h1>
         <form onSubmit={handleSubmit}>
             <div className="mb-3">
-                <label htmlFor="email">
-                    <strong>Email</strong>
+                <label htmlFor="staffno">
+                    <strong>Staff No</strong>
                 </label>
                 <input 
                 type="text"
-                placeholder="Enter your email"
+                placeholder="Enter your Staff No"
                 autoComplete="off"
                 name="name"
                 className="form-control rounded-0"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setStaffNo(e.target.value)}
                  />
             </div>
             <div className="mb-3">
@@ -52,7 +47,8 @@ function Login () {
         </form>
             </div>
         </div>
+
     )
 }
 
-export default Login;
+export default AdminLogin
