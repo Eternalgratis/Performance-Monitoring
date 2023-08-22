@@ -15,7 +15,7 @@ app.post('/admin-login', (req, res) => {
     AdminModel.findOne({staffno:staffno})
     .then(user => {
         if(user) {
-            if(user.password === pasoword) {
+            if(user.password === password) {
                 res.json('Successful')
             } else {
                 res.json('Already taken')
