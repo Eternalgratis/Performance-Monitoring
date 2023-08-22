@@ -5,6 +5,7 @@ import Login from './components/Login'
 import AccountOfficer from './components/AccountOfficer'
 import Registration from './components/Registration'
 import AdminLogin from './components/AdminLogin'
+import HomePage from './components/HomePage'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/admin-login" element={<AdminLogin />}></Route>
           <Route path="/accountOfficer" element={<AccountOfficer />}></Route>
+          <Route path='/homepage' element={<HomePage />}></Route>
         </Routes>
         </BrowserRouter>
       </div>
