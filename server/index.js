@@ -37,7 +37,7 @@ app.post('/login', (req, res) => {
                 res.json('Already taken')
             }
         }  else {
-            res.json('No record')
+            res.redirect('/login')
         }
     })
 })
