@@ -81,7 +81,7 @@ function Admin() {
             <button type="submit" className="btn btn-success w-100 rounded-0">Register</button>
         </form>
         <p>Already have an acctount?</p>
-        <Link to='/login' className="btn btn-default border w-100 bg-light rounded-0 ">Login</Link>
+        <Link to='/admin-login' className="btn btn-default border w-100 bg-light rounded-0 ">Login</Link>
             </div>
         </div>
     )

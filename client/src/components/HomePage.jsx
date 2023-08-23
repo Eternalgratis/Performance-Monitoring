@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 function HomePage () {
+    const [user, setUser] = useState("Titi")
     return (
-        <h1>Home Page</h1>
+        <h1>Welcome {setUser}</h1>
     )
 }
 

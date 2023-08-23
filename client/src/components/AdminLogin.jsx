@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function AdminLogin () {
         const [staffno, setStaffNo] = useState("")
         const [password, setPassword] = useState("")
+        const navigate = useNavigate()
 
         const handleSubmit = (e) => {
             e.preventDefault()
             axios.post('http://localhost:3001/admin-login', {staffno, password})
             .then(result => console.log(result))
+               navigate('/homepage')
             .then(err => console.log(err))
         }
 
