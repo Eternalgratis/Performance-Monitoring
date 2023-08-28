@@ -4,7 +4,7 @@ const adminSchema = new mongoose.Schema({
     staffno: String,
     name: String,
     email: String,
-    password: String
+    password: String,
 })
 
 const AdminModel = mongoose.model("admin", adminSchema)

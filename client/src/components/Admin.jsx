@@ -10,18 +10,19 @@ function Admin() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const hanndleSubmit = (e) => {
+
+    const handleSubmit = (e) => {
         e.preventDefault()
         axios.post('http://localhost:3001/admin', {staffno, name, email, password})
         .then(result => console.log(result))
-        .then(err => console.log(err))
+        .catch(err => console.log(err))
     }
 
     return (
         <div className="d-flex justify-content-center align-item-center bg-secondary wh-100">
             <div className="bg-white p-3 rounded wh-25">
             <h1>Register</h1>
-        <form onSubmit={hanndleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div className="mb-3">
                 <label htmlFor="name">
                     <strong>Staff No</strong>

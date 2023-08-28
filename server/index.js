@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const AdminModel = require('./models/admin')
 const AccountofficerModel = require('./models/accountOfficer')
+const {hashPassword, comparedPassword }= require('../server/helpers/auth')
 
 const app = express()
 app.use(express.json())
@@ -42,13 +43,20 @@ app.post('/login', (req, res) => {
     })
 })
 
-app.post('/admin', (req, res) => {
+app.post('/admin', async (req, res) => {
     const {staffno, name, email, password} = req.body
    // Check if the user is an admin based on the staffno
    if (staffno !== 'LIRS/1600') {
     return res.status(403).json({ error: 'User is not an admin.' });
 }
-    AdminModel.create(req.body)
+    // Hash the password before storing it
+   const hashedPassword = await hashPassword(password); // Call the hashedPassword function
+   const admin = await AdminModel.create({
+    staffno: staffno,
+    name: name,
+    email: email,
+    password: hashedPassword
+   })
     .then(admin => res.json(admin))
     .catch(err => res.json(err))
 })
@@ -57,6 +65,10 @@ app.post('/accountofficer', (req, res) => {
     AccountofficerModel.create(req.body)
     .then(accountofficer => res.json(accountofficer))
     .catch(err => res.json(err))
+})
+
+app.get('/', (req, res) => {
+
 })
 
 app.listen(3001, () => {

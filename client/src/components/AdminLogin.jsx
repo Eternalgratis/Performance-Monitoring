@@ -10,8 +10,10 @@ function AdminLogin () {
         const handleSubmit = (e) => {
             e.preventDefault()
             axios.post('http://localhost:3001/admin-login', {staffno, password})
-            .then(result => console.log(result))
-               navigate('/homepage')
+            .then(result => {
+                console.log(result)
+                navigate('/homepage')
+            })
             .then(err => console.log(err))
         }
 
