@@ -61,8 +61,14 @@ app.post('/admin', async (req, res) => {
     .catch(err => res.json(err))
 })
 
-app.post('/accountofficer', (req, res) => {
-    AccountofficerModel.create(req.body)
+app.post('/accountofficer', async (req, res) => {
+    const { name, email, password } = req.body
+    const hashedPassword = await hashPassword(password)
+  const accountofficer =  await AccountofficerModel.create({
+    name: name,
+    email: email,
+    password: hashedPassword
+  })
     .then(accountofficer => res.json(accountofficer))
     .catch(err => res.json(err))
 })
