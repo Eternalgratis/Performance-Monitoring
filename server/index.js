@@ -11,38 +11,6 @@ app.use(cors())
 
 mongoose.connect('mongodb://127.0.0.1:27017/PerformanceMonitoring')
 
-app.post('/admin-login', (req, res) => {
-    const {staffno, password} = req.body
-    AdminModel.findOne({staffno:staffno})
-    .then(user => {
-        if(user) {
-            if(user.password === password) {
-                res.json('Successful')
-            } else {
-                res.json('Already taken')
-            }
-        } else {
-            res.json('No record')
-        }
-    })
-})
-
-app.post('/login', (req, res) => {
-    const {email, password} = req.body
-    AccountofficerModel.findOne({email:email})
-    .then(user => {
-        if(user) {
-            if(user.password === password) {
-                res.json('Successful')
-            } else {
-                res.json('Already taken')
-            }
-        }  else {
-            res.redirect('/login')
-        }
-    })
-})
-
 app.post('/admin', async (req, res) => {
     const {staffno, name, email, password} = req.body
    // Check if the user is an admin based on the staffno
@@ -61,10 +29,28 @@ app.post('/admin', async (req, res) => {
     .catch(err => res.json(err))
 })
 
+app.post('/admin-login', async (req, res) => {
+  try {
+    const {staffno, password} = req.body
+    const user = await AdminModel.findOne({staffno:staffno})  
+    if(!user) {
+        return res.status(401).json({error:'User not found'})
+    }
+    const match = await comparedPassword(password, user.password)
+    if(match) {
+     return res.json({message:'Password match'})
+    }
+    return res.status(401).json({error:'Pasword incorrect'}) 
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({message:'Internal server error'})
+  }
+})
+
 app.post('/accountofficer', async (req, res) => {
     const { name, email, password } = req.body
     const hashedPassword = await hashPassword(password)
-  const accountofficer =  await AccountofficerModel.create({
+    const accountofficer =  await AccountofficerModel.create({
     name: name,
     email: email,
     password: hashedPassword
@@ -72,6 +58,23 @@ app.post('/accountofficer', async (req, res) => {
     .then(accountofficer => res.json(accountofficer))
     .catch(err => res.json(err))
 })
+
+app.post('/login', async (req, res) => {
+    try {
+        const {email, password} = req.body
+        const user = await AccountofficerModel.findOne({email:email})
+        if(!user) {
+            return res.json('User not found')
+        }
+        const match = await comparedPassword(password, user.password)
+        if(match) {
+            res.json('Password match')
+          }         
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 
 app.get('/', (req, res) => {
 
