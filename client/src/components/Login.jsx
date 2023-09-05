@@ -3,18 +3,31 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Login () {
-    const[email, setEmail] = useState("")
+    const[name, setName] = useState("")
     const[password, setPassword] = useState("")
     const navigate = useNavigate()
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3001/login', {email, password})
-        .then(result => {console.log(result)
-            navigate('/homepage')
-        })
-        .then(err => console.log(err))
+        try {
+            axios.post('http://localhost:3001/login', {name, password})
+            .then(result => {console.log(result)
+                navigate('/homepage')
+                if(result.data = 'Exist') {
+                    navigate('/homepage', { state: { id:name } })
+                }
+                else if(result.data = 'Not exist') {
+                    alert('User is not signed up')
+                }
+            })
+            .catch (error => {
+                alert('Wrong details')
+                console.log(error)
+            })
+        } catch (error) {
+            
+        }
     }
 
     return (
@@ -32,7 +45,7 @@ function Login () {
                 autoComplete="off"
                 name="name"
                 className="form-control rounded-0"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
                  />
             </div>
             <div className="mb-3">

@@ -1,17 +1,34 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios"
 
 function AccountOfficer () {
     const[name, setName] = useState("")
     const[email, setEmail] = useState("")
     const[password, setPassword] = useState("")
+    const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3001/accountofficer', {name, email, password})
-        .then(result => console.log(result))
-        .then(err => console.log(err))
+        try {
+            axios.post('http://localhost:3001/accountofficer', {name, email, password})
+            .then(result => {
+                console.log(result)
+                if(result.data = 'Exist') {
+                    navigate('/homepage', {state: {id:email}})
+                }
+                else if(result.data = 'Not exist') {
+                    navigate('/admin', {state: {id:email}})
+                }
+            })
+            .catch(error => {
+                alert('Wrong details')
+                console.log(error)
+            })
+       
+        } catch (error) {
+            
+        }
     }
 
     return (
