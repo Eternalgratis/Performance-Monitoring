@@ -3,18 +3,31 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 function AdminLogin () {
-        const [staffno, setStaffNo] = useState("")
+        const [name, setName] = useState("")
         const [password, setPassword] = useState("")
         const navigate = useNavigate()
 
         const handleSubmit = (e) => {
             e.preventDefault()
-            axios.post('http://localhost:3001/admin-login', {staffno, password})
-            .then(result => {
-                console.log(result)
-                navigate('/homepage')
-            })
-            .then(err => console.log(err))
+            try {
+                axios.post('http://localhost:3001/admin-login', {name, password})
+                .then(result => {
+                    console.log(result)
+                    if(result.data = 'Exist') {
+                        navigate('/homepage', { state: { id:name } })
+                    }
+                    else if(result.data = 'Not exist') {
+                        alert('User is not signed up')
+                    }
+                })
+                .catch (error => {
+                    alert('Wrong details')
+                    console.log(error)
+                })
+    
+            } catch (error) {
+                console.log(error)
+            }
         }
 
     return (
@@ -24,15 +37,15 @@ function AdminLogin () {
         <form onSubmit={handleSubmit}>
             <div className="mb-3">
                 <label htmlFor="staffno">
-                    <strong>Staff No</strong>
+                    <strong>Name</strong>
                 </label>
                 <input 
                 type="text"
-                placeholder="Enter your Staff No"
+                placeholder="Enter your Name"
                 autoComplete="off"
                 name="name"
                 className="form-control rounded-0"
-                onChange={(e) => setStaffNo(e.target.value)}
+                onChange={(e) => setName(e.target.value)}
                  />
             </div>
             <div className="mb-3">

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 function HomePage () {
-    const [user, setUser] = useState("Titi")
+    const location = useLocation();
+    const userName = location?.state?.name;
     return (
-        <h1 onChange={(e) => setUser(e.target.value)}>Welcome</h1>
+        <h1>Welcome {userName ? userName : ''}</h1>
     )
 }
 

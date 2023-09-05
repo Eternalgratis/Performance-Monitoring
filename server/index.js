@@ -31,8 +31,8 @@ app.post('/admin', async (req, res) => {
 
 app.post('/admin-login', async (req, res) => {
   try {
-    const {staffno, password} = req.body
-    const user = await AdminModel.findOne({staffno:staffno})  
+    const {name, password} = req.body
+    const user = await AdminModel.findOne({name:name})  
     if(!user) {
         return res.status(401).json({error:'User not found'})
     }
