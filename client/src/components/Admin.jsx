@@ -20,10 +20,10 @@ function Admin() {
             .then(result => {
                 console.log(result)
                 if(result.data = 'Exist') {
-                    navigate('/homepage', {state: {id:email}})
+                    navigate('/homepage', {state: {id:name}})
                 }
                 else if(result.data = 'Not exist') {
-                    navigate('/admin', {state: {id:email}})
+                    navigate('/admin', {state: {id:name}})
                 }
             })
             .catch(error => {
