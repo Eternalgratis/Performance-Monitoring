@@ -6,6 +6,7 @@ import AccountOfficer from './components/AccountOfficer'
 import Registration from './components/Registration'
 import AdminLogin from './components/AdminLogin'
 import HomePage from './components/HomePage'
+import RevenueCollection from './components/Collection'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/admin-login" element={<AdminLogin />}></Route>
           <Route path="/accountOfficer" element={<AccountOfficer />}></Route>
           <Route path='/homepage' element={<HomePage />}></Route>
+          <Route path='/collections' element={<RevenueCollection />}></Route>
         </Routes>
         </BrowserRouter>
       </div>
