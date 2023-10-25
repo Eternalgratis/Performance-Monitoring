@@ -8,7 +8,10 @@ function RevenueCollection () {
         const selected_file = e.target.file[0]
     }
     return (
-        <input type="file" onChange={handleChange} />
+        <>
+          <input type="file" onChange={handleChange} />
+          <button>Upload</button>
+        </>
     )
 }
 
